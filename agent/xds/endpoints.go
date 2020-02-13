@@ -150,7 +150,7 @@ func (s *Server) endpointsFromSnapshotConnectProxy(cfgSnap *proxycfg.ConfigSnaps
 }
 
 func (s *Server) endpointsFromSnapshotMeshGateway(cfgSnap *proxycfg.ConfigSnapshot, token string) ([]proto.Message, error) {
-	datacenters := cfgSnap.MeshGateway.Datacenters()
+	datacenters := cfgSnap.MeshGateway.Datacenters(cfgSnap.Datacenter)
 	resources := make([]proto.Message, 0, len(datacenters)+len(cfgSnap.MeshGateway.ServiceGroups))
 
 	// generate the endpoints for the gateways in the remote datacenters
